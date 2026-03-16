@@ -1,0 +1,260 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.gift-card {
+
+  height: 300px;
+  /* Typical gift card height */
+  width: 350px;
+  /* Typical gift card width */
+  background-color: #17141d;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  /* Adds depth */
+  overflow: hidden;
+  /* Ensures content stays within rounded corners */
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.gift-card {
+  position: relative;
+  /* allow absolute children like the triangle */
+}
+
+/* triangular "message" edges that meet at the corners to form a continuous rectangular sawtooth */
+.card {
+
+  width: 300px;
+  height: 200px;
+  background: #1e1e1e;
+}
+
+/* common */
+.gift-card {
+  position: relative;
+}
+
+/* first diagonal */
+.gift-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 145%;
+  height: 0.5px;
+  background: rgb(0, 0, 0);
+  transform: translate(-50%, -50%) rotate(40deg);
+  z-index: 9;
+}
+
+/* second diagonal */
+.gift-card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 145%;
+  height: 0.5px;
+  background: rgb(0, 0, 0);
+  transform: translate(-50%, -50%) rotate(-40deg);
+  z-index: 9;
+}
+
+.click {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48.5px;
+  height: 48.5px;
+  border-radius: 50%;
+  background: rgb(179, 25, 25);
+  border-radius: 167px;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  font-size: 12px;
+  align-items: center;
+}
+
+/* top triangle */
+.up {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 115%;
+  height: 58%;
+  transform: translateX(-50%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background-color: #d6bd96;
+  border: #17141d 2px solid;
+}
+
+/* bottom triangle */
+.down {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  width: 127%;
+  height: 58%;
+  transform: translateX(-50%);
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  background-color: #d6bd96;
+  z-index: 10;
+}
+
+/* left triangle */
+.left {
+  position: absolute;
+  left: 175px;
+  top: 50%;
+  width: 58%;
+  height: 114%;
+  transform: translateY(-50%);
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  background-color: #d6bd96;
+}
+
+/* right triangle */
+.right {
+  position: absolute;
+  right: 175px;
+  top: 50%;
+  width: 58%;
+  height: 114%;
+  transform: translateY(-50%);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  background-color: #d6bd96;
+
+}
+
+.gift-card__content {
+  flex: 2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gift-card__amount {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.gift-card__amount-remaining {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.gift-card__code {
+  font-family: monospace;
+  /* Monospaced font for codes */
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.gift-card__msg {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+#then {
+  display: none;
+}
+
+.wr {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.gift-card {
+  position: relative;
+}
+
+/* overlay hidden by default */
+.gift-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(55.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+  z-index: 15;
+}
+
+.gift-card__overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* remove top:10px from .qr */
+.qr {
+  font-size: 1.5rem;
+  margin-bottom: -38px;
+  margin-top: -9px;
+  margin-right: 97px;
+  color: #ba6401;
+  background-color: #ffffff3d;
+}
+
+.qr2 {
+ font-size: 1.5rem;
+  margin-bottom: -47px;
+  margin-right: 91px;
+  margin-top: 39px;
+  color: #ba6401;
+  background-color: #ffffff3d;
+}
+
+.qr3 {
+  margin-bottom: 12px;
+  margin-right: 149px;
+  color: #ba6401;
+  margin-top: 49px;
+  font-size: 15px;
+  background-color: #ffffff3d;;
+}
+
+.line {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.qr4 {
+ margin-bottom: 19px;
+  margin-right: 60px;
+  color: #ba6401;
+  margin-top: 100px;
+  font-size: 10px;
+  background-color: #ffffff3d;
+}
